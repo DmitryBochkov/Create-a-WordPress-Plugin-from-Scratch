@@ -39,6 +39,10 @@ class MuPlugin
     add_action( 'init', array( $this, 'custom_post_type' ) );
   }
 
+  function register() {
+    add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+  }
+
   function activate() {
     // generate CPT
     $this->custom_post_type();
@@ -58,10 +62,17 @@ class MuPlugin
     ) );
   }
 
+  function enqueue() {
+    // enqueue all scripts
+    wp_enqueue_style( 'myplugin-style', plugins_url( '/assets/mystyle.css', __FILE__ ) );
+    wp_enqueue_script( 'myplugin-script', plugins_url( '/assets/myscript.js', __FILE__ ) );
+  }
+
 }
 
 if ( class_exists( 'MuPlugin' ) ) {
   $muplugin = new MuPlugin();
+  $muplugin->register();
 }
 
 // activation
