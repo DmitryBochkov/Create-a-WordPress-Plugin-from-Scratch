@@ -1,0 +1,19 @@
+{
+    "name": "dmitr/my-universal-plugin",
+    "description": "My universal plugin",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Dmitry Bochkov",
+            "email": "dmitry.bochkov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Inc\\": "./inc"
+      }
+    }
+}

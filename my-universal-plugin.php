@@ -33,6 +33,13 @@ if ( ! defined( 'ABSPATH' ) ) {
   die;
 }
 
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+  require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}
+
+use Inc\Activate;
+use Inc\Deactivate;
+
 if (! class_exists( 'MUPlugin ') ) {
   class MUPlugin
   {
@@ -80,6 +87,10 @@ if (! class_exists( 'MUPlugin ') ) {
       wp_enqueue_script( 'myplugin-script', plugins_url( '/assets/myscript.js', __FILE__ ) );
     }
 
+    function activate() {
+      Activate::activate();
+    }
+
   }
 }
 
@@ -91,9 +102,7 @@ if ( class_exists( 'MUPlugin' ) ) {
 }
 
 // activation
-require_once plugin_dir_path( __FILE__ ) . 'inc/muplugin-ativate.php';
-register_activation_hook( __FILE__, array( 'MUPluginActivate', 'activate' ) );
+register_activation_hook( __FILE__, array( $muplugin, 'activate' ) );
 
 // deactivation
-require_once plugin_dir_path( __FILE__ ) . 'inc/muplugin-deativate.php';
-register_deactivation_hook( __FILE__, array( 'MUPluginDeactivate', 'deactivate' ) );
+register_deactivation_hook( __FILE__, array( 'Deactivate', 'deactivate' ) );

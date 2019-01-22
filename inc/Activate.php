@@ -3,9 +3,10 @@
 * @package MyUniversalPlugin
 */
 
-class MUPluginActivate
-{
+namespace Inc;
 
+class Activate
+{
   public static function activate() {
     flush_rewrite_rules();
   }
