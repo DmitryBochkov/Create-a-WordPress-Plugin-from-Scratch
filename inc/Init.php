@@ -13,7 +13,8 @@ final class Init
   public static function get_servies() {
     return [
       Pages\Admin::class,
-      Base\Enqueue::class
+      Base\Enqueue::class,
+      Base\SettingsLink::class
     ];
   }
 
