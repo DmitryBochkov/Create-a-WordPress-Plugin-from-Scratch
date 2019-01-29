@@ -11,6 +11,8 @@ class Admin extends BaseController
 {
   public $settings;
   public $pages = array();
+  public $subpages = array();
+
   public function __construct()
   {
     $this->settings = new SettingsApi();
@@ -25,11 +27,29 @@ class Admin extends BaseController
         'position' => 110
       )
     );
+    $this->subpages = array(
+      array(
+        'parent_slug' => 'mu_plugin',
+        'page_title' =>  'Custom Post Types',
+        'menu_title' => 'CPT',
+        'capability' => 'manage_options',
+        'menu_slug' => 'mu_plugin_cpt',
+        'callback' => function () { echo "<h1>CPT Manager</h1>"; }
+      ),
+      array(
+        'parent_slug' => 'mu_plugin',
+        'page_title' =>  'Custom Widgets',
+        'menu_title' => 'Widgets',
+        'capability' => 'manage_options',
+        'menu_slug' => 'mu_plugin_widgets',
+        'callback' => function () { echo "<h1>Widgets Manager</h1>"; }
+      ),
+    );
   }
 
   public function register()
   {
-    $this->settings->addPages( $this->pages )->register();
+    $this->settings->addPages( $this->pages )->withSubPage( 'Dashboard' )->addSubPages( $this->subpages )->register();
   }
 
 }
