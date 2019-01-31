@@ -49,7 +49,7 @@ class Admin extends BaseController
         'menu_title' => 'CPT',
         'capability' => 'manage_options',
         'menu_slug' => 'mu_plugin_cpt',
-        'callback' => function () { echo "<h1>CPT Manager</h1>"; }
+        'callback' => array( $this->callbacks, 'adminCPT' )
       ),
       array(
         'parent_slug' => 'mu_plugin',
@@ -57,7 +57,7 @@ class Admin extends BaseController
         'menu_title' => 'Widgets',
         'capability' => 'manage_options',
         'menu_slug' => 'mu_plugin_widgets',
-        'callback' => function () { echo "<h1>Widgets Manager</h1>"; }
+        'callback' => array( $this->callbacks, 'adminWidgets' )
       ),
     );
   }
