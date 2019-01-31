@@ -31,7 +31,7 @@ class SettingsApi
     }
 
     $admin_page = $this->admin_pages[0];
-    // add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function = '' )
+
     $subpage = array(
       array(
         'parent_slug' => $admin_page['menu_slug'],
