@@ -1,0 +1,36 @@
+.nav-tabs {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* border-bottom: 1px solid #ddd; */
+  overflow: hidden;
+}
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}
+.nav-tabs > li > a {
+  display: block;
+  margin-right: 2px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  text-decoration: none;
+}
+.tab-content > .tab-pane {
+  display: none;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px -2px rgba(0, 0, 0, .15);
+}
+.tab-content > .tab-pane.active {
+  display: block;
+}
