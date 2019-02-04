@@ -23,15 +23,15 @@ class AdminCallbacks extends BaseController
     return require_once "$this->plugin_path/templates/adminWidgets.php";
   }
 
-  public function mupOptionsGroup( $input )
-  {
-    return $input;
-  }
-
-  public function mupAdminSection()
-  {
-    echo "Test section for custom fields";
-  }
+  // public function mupOptionsGroup( $input )
+  // {
+  //   return $input;
+  // }
+  //
+  // public function mupAdminSection()
+  // {
+  //   echo "Test section for custom fields";
+  // }
 
   public function mupTextExample()
   {
