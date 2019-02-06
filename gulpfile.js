@@ -29,18 +29,18 @@ var reload       = browserSync.reload;
 var projectURL   = 'http://wp-plugin-dev';
 
 var styleSRC     = 'src/scss/mystyle.scss';
-var styleForm    = 'src/scss/form.scss';
-var styleSlider  = 'src/scss/slider.scss';
-var styleAuth    = 'src/scss/auth.scss';
+// var styleForm    = 'src/scss/form.scss';
+// var styleSlider  = 'src/scss/slider.scss';
+// var styleAuth    = 'src/scss/auth.scss';
 var styleURL     = './assets/';
 var mapURL       = './';
 
 var jsSRC        = 'src/js/';
 var jsAdmin      = 'myscript.js';
-var jsForm       = 'form.js';
-var jsSlider     = 'slider.js';
-var jsAuth       = 'auth.js';
-var jsFiles      = [jsAdmin, jsForm, jsSlider, jsAuth];
+// var jsForm       = 'form.js';
+// var jsSlider     = 'slider.js';
+// var jsAuth       = 'auth.js';
+var jsFiles      = [jsAdmin];
 var jsURL        = './assets/';
 
 var styleWatch   = 'src/scss/**/*.scss';
@@ -48,7 +48,7 @@ var jsWatch      = 'src/js/**/*.js';
 var phpWatch     = '**/*.php';
 
 function css(done) {
-	gulp.src([styleSRC, styleForm, styleSlider, styleAuth])
+	gulp.src([styleSRC])
 		.pipe( sourcemaps.init() )
 		.pipe( sass({
 			errLogToConsole: true,

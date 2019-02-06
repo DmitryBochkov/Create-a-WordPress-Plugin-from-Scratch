@@ -1,0 +1,70 @@
+$on: #009eea;
+$off: #8c8c8c;
+$bg: #d9cb9e;
+
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+@mixin userSelect($value) {
+	-webkit-touch-callout: $value;
+	-webkit-user-select: $value;
+	-khtml-user-select: $value;
+	-moz-user-select: $value;
+	-ms-user-select: $value;
+	user-select: $value;
+}
+@mixin ui-toggle($height, $on, $off) {
+	margin: 0;
+	padding: 0;
+
+	input[type="checkbox"] {
+		display: none;
+
+		&:checked + label {
+			background-color: $on;
+			border-color: $on;
+			// h-length, v-length, blur, spread, colour
+			box-shadow: inset 0 0 0 #{$height / 2} $on;
+
+			> div {
+				margin-left: $height;
+			}
+		}
+	}
+
+	label {
+		display: inline-block;
+		position: relative;
+		width: $height * 2;
+		height: $height;
+		border-radius: $height;
+		background-color: $off;
+		box-shadow: inset 0 0 0 0 $on;
+		border: 2px solid $off;
+		transition: all 0.2s ease;
+		@include userSelect(none);
+
+		div {
+			width: $height;
+			height: $height;
+			border-radius: $height / 2;
+			transition: all 0.2s ease;
+			background-color: #fff;
+		}
+
+		&:hover {
+			& > div {
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+div.ui-toggle {
+	@include ui-toggle(20px, $on, $off);
+}
