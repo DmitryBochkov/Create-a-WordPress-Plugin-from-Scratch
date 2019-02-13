@@ -10,13 +10,13 @@ use \Inc\Base\BaseController;
 use \Inc\Api\Callbacks\AdminCallbacks;
 use \Inc\Api\Callbacks\ManagerCallbacks;
 
-class Admin extends BaseController
+class Dashboard extends BaseController
 {
   public $settings;
   public $callbacks;
   public $callbacks_mngr;
   public $pages = array();
-  public $subpages = array();
+  // public $subpages = array();
 
   public function register()
   {
@@ -24,13 +24,13 @@ class Admin extends BaseController
     $this->callbacks = new AdminCallbacks();
     $this->callbacks_mngr = new ManagerCallbacks();
     $this->setPages();
-    $this->setSubPages();
+    // $this->setSubPages();
 
     $this->setSettings();
     $this->setSections();
     $this->setFields();
 
-    $this->settings->addPages( $this->pages )->withSubPage( 'Dashboard' )->addSubPages( $this->subpages )->register();
+    $this->settings->addPages( $this->pages )->withSubPage( 'Dashboard' )->register();
   }
 
   public function setPages()
@@ -48,27 +48,27 @@ class Admin extends BaseController
     );
   }
 
-  public function setSubPages()
-  {
-    $this->subpages = array(
-      array(
-        'parent_slug' => 'mu_plugin',
-        'page_title' =>  'Custom Post Types',
-        'menu_title' => 'CPT',
-        'capability' => 'manage_options',
-        'menu_slug' => 'mu_plugin_cpt',
-        'callback' => array( $this->callbacks, 'adminCPT' )
-      ),
-      array(
-        'parent_slug' => 'mu_plugin',
-        'page_title' =>  'Custom Widgets',
-        'menu_title' => 'Widgets',
-        'capability' => 'manage_options',
-        'menu_slug' => 'mu_plugin_widgets',
-        'callback' => array( $this->callbacks, 'adminWidgets' )
-      ),
-    );
-  }
+  // public function setSubPages()
+  // {
+  //   $this->subpages = array(
+  //     array(
+  //       'parent_slug' => 'mu_plugin',
+  //       'page_title' =>  'Custom Post Types',
+  //       'menu_title' => 'CPT',
+  //       'capability' => 'manage_options',
+  //       'menu_slug' => 'mu_plugin_cpt',
+  //       'callback' => array( $this->callbacks, 'adminCPT' )
+  //     ),
+  //     array(
+  //       'parent_slug' => 'mu_plugin',
+  //       'page_title' =>  'Custom Widgets',
+  //       'menu_title' => 'Widgets',
+  //       'capability' => 'manage_options',
+  //       'menu_slug' => 'mu_plugin_widgets',
+  //       'callback' => array( $this->callbacks, 'adminWidgets' )
+  //     ),
+  //   );
+  // }
 
   public function setSettings()
   {

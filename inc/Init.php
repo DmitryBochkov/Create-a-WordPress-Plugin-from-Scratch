@@ -12,9 +12,18 @@ final class Init
   */
   public static function get_servies() {
     return [
-      Pages\Admin::class,
+      Pages\Dashboard::class,
       Base\Enqueue::class,
-      Base\SettingsLink::class
+      Base\SettingsLink::class,
+      Base\CustomPostTypeController::class,
+      Base\CustomTaxonomyController::class,
+      Base\WidgetController::class,
+      Base\GalleryController::class,
+      Base\TestimonialController::class,
+      Base\TemplatesController::class,
+      Base\LoginController::class,
+      Base\MembershipsController::class,
+      Base\ChatController::class,
     ];
   }
 

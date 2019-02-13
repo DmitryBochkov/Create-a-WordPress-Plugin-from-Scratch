@@ -18,9 +18,44 @@ class AdminCallbacks extends BaseController
     return require_once "$this->plugin_path/templates/adminCPT.php";
   }
 
+  public function adminTaxonomy()
+  {
+    return require_once "$this->plugin_path/templates/adminTaxonomy.php";
+  }
+
   public function adminWidgets()
   {
     return require_once "$this->plugin_path/templates/adminWidgets.php";
+  }
+
+  public function adminGallery()
+  {
+    return require_once "$this->plugin_path/templates/adminGallery.php";
+  }
+
+  public function adminTestimonials()
+  {
+    return require_once "$this->plugin_path/templates/adminTestimonials.php";
+  }
+
+  public function adminTemplates()
+  {
+    return require_once "$this->plugin_path/templates/adminTemplates.php";
+  }
+
+  public function adminLogin()
+  {
+    return require_once "$this->plugin_path/templates/adminLogin.php";
+  }
+
+  public function adminMemberships()
+  {
+    return require_once "$this->plugin_path/templates/adminMemberships.php";
+  }
+
+  public function adminChat()
+  {
+    return require_once "$this->plugin_path/templates/adminChat.php";
   }
 
   // public function mupOptionsGroup( $input )
