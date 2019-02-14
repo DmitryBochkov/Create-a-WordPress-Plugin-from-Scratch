@@ -14,11 +14,9 @@ class WidgetController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['media_widget'] ) ? $option['media_widget'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'media_widget' ) ) {
       return;
     }
 

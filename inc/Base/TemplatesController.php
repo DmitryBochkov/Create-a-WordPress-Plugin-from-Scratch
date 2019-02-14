@@ -14,11 +14,9 @@ class TemplatesController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['templates_manager'] ) ? $option['templates_manager'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'templates_manager' ) ) {
       return;
     }
 

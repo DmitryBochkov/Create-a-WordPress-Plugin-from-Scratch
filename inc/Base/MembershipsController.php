@@ -14,11 +14,9 @@ class MembershipsController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['membership_manager'] ) ? $option['membership_manager'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'membership_manager' ) ) {
       return;
     }
 

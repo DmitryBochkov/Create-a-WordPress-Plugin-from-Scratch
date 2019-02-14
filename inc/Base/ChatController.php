@@ -14,11 +14,9 @@ class ChatController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['chat_manager'] ) ? $option['chat_manager'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'chat_manager' ) ) {
       return;
     }
 

@@ -14,11 +14,9 @@ class LoginController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['login_manager'] ) ? $option['login_manager'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'login_manager' ) ) {
       return;
     }
 

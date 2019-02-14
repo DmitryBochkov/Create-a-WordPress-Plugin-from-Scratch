@@ -14,11 +14,9 @@ class CustomTaxonomyController extends BaseController
   public $callbacks;
   public $subpages = array();
 
-  public function register() {
-    $option = get_option( 'mu_plugin' );
-    $activated = isset( $option['taxonomy_manager'] ) ? $option['taxonomy_manager'] : false;
-
-    if ( !$activated ) {
+  public function register()
+  {
+    if ( !$this->activated( 'taxonomy_manager' ) ) {
       return;
     }
 
