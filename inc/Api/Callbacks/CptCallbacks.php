@@ -18,7 +18,6 @@ class CptCallbacks
   {
     $output = get_option( 'mu_plugin_cpt' );
 
-<<<<<<< HEAD
     if ( empty( $output )) {
       $output = array( $input['post_type'] => $input);
     } else {
@@ -31,19 +30,6 @@ class CptCallbacks
       }
     }
 
-
-=======
-    $new_input = array( $input['post_type'] => $input );
-
-    foreach ( $output as $key => $value ) {
-      if ( $input['post_type'] === $key) {
-        $output[$key] = $input;
-      } else {
-        $output[$input['post_type']] = $input;
-      }
-    }
-
->>>>>>> f48ba5785568dd5b920ebb3a6b3290f676b6ecba
     return $output;
   }
 
