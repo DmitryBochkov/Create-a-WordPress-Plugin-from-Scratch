@@ -18,15 +18,16 @@ class CptCallbacks
   {
     $output = get_option( 'mu_plugin_cpt' );
 
-    if ( empty( $output )) {
-      $output = array( $input['post_type'] => $input);
-    } else {
-      foreach ( $output as $key => $value ) {
-        if ( $input['post_type'] === $key) {
-          $output[$key] = $input;
-        } else {
-          $output[$input['post_type']] = $input;
-        }
+    if ( count( $output ) == 0 ) {
+      $output[$input['post_type']] = $input;
+      return $output;
+    }
+
+    foreach ( $output as $key => $value ) {
+      if ( $input['post_type'] === $key) {
+        $output[$key] = $input;
+      } else {
+        $output[$input['post_type']] = $input;
       }
     }
 
@@ -40,7 +41,7 @@ class CptCallbacks
     $option_name = $args['option_name'];
     $input = get_option( $option_name );
 
-    echo '<input type="text" id="' . $name . '" name="' . $option_name .'[' . $name . '] " value="" class="regular-text" placeholder="' . $placeholder . '">';
+    echo '<input type="text" id="' . $name . '" name="' . $option_name .'[' . $name . '] " value="" class="regular-text" placeholder="' . $placeholder . '" required >';
   }
 
   public function checkboxField( $args )

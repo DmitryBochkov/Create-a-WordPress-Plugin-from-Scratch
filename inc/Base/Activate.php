@@ -12,12 +12,12 @@ class Activate
 
     $default = array();
 
-    if ( ! get_option( 'alecaddd_plugin' ) ) {
-			update_option( 'alecaddd_plugin', $default );
+    if ( ! get_option( 'mu_plugin' ) ) {
+			update_option( 'mu_plugin', $default );
 		}
 
-		if ( ! get_option( 'alecaddd_plugin_cpt' ) ) {
-			update_option( 'alecaddd_plugin_cpt', $default );
+		if ( ! get_option( 'mu_plugin_cpt' ) ) {
+			update_option( 'mu_plugin_cpt', $default );
 		}
   }
 }
