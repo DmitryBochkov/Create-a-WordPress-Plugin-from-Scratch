@@ -25,7 +25,15 @@
           $public = isset($option['public']) ? 'true' : 'false';
           $has_archive = isset($option['has_archive']) ? 'true' : 'false';
 
-          echo '<tr><td>' . $option['post_type'] . '</td><td>' . $option['singular_name'] . '</td><td>' . $option['plural_name'] . '</td><td>' . $public . '</td><td>' . $has_archive . '</td><td><a href="#">EDIT</a> - <a href="#">DELETE</a></td></tr>';
+          echo '<tr><td>' . $option['post_type'] . '</td><td>' . $option['singular_name'] . '</td><td>' . $option['plural_name'] . '</td><td>' . $public . '</td><td>' . $has_archive . '</td><td><a href="#">EDIT</a> ';
+
+          echo '<form action="options.php" method="post" class="inline-block">';
+          settings_fields( 'mu_plugin_cpt_settings' );
+          echo '<input type="hidden" name="remove" value="'. $option['post_type'] . '">';
+          submit_button( 'Delete', 'delete small', 'submit', false, array(
+            'onclick' => 'return confirm("Are you sure you want to delete this Custom Posе Type? The data associated with it will not be deleted.");'
+          ) );
+          echo '</form></td></tr>';
         }
         echo '</table>';
       ?>
