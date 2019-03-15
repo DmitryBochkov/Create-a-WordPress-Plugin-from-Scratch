@@ -19,5 +19,9 @@ class Activate
 		if ( ! get_option( 'mu_plugin_cpt' ) ) {
 			update_option( 'mu_plugin_cpt', $default );
 		}
+
+		if ( ! get_option( 'mu_plugin_tax' ) ) {
+			update_option( 'mu_plugin_tax', $default );
+		}
   }
 }
