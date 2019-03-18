@@ -32,6 +32,11 @@ class CustomTaxonomyController extends BaseController
     $this->setSections();
     $this->setFields();
     $this->settings->addSubPages( $this->subpages )->register();
+    $this->storeCustomTaxonomies();
+
+    if ( !empty( $this->taxonomies ) ) {
+      add_action( 'init', array( $this, 'registerCustomTaxonomies' ) );
+    }
   }
 
   public function setSubPages()
@@ -120,6 +125,47 @@ class CustomTaxonomyController extends BaseController
     );
 
     $this->settings->setFields( $args );
+  }
+
+  public function storeCustomTaxonomies()
+  {
+    // get the taxonomies array
+    $options = get_option( 'mu_plugin_tax' ) ?: array();
+
+    // store that info into the array
+    foreach ( $options as $option ) {
+      $labels = array(
+        'name'              => $option['singular_name'],
+        'singular_name'     => $option['singular_name'],
+        'search_items'      => 'Search ' . $option['singular_name'],
+        'all_items'         => 'All ' . $option['singular_name'],
+        'parent_item'       => 'Parent ' . $option['singular_name'],
+        'parent_item_colon' => 'Parent ' . $option['singular_name'] . ':',
+        'edit_item'         => 'Edit ' . $option['singular_name'],
+        'update_item'       => 'Update ' . $option['singular_name'],
+        'add_new_item'      => 'Add New ' . $option['singular_name'],
+        'new_item_name'     => 'New ' . $option['singular_name'] . ' Name',
+        'menu_name'         => $option['singular_name'],
+      );
+
+      $this->taxonomies[] = array(
+        'hierarchical'      => isset( $option['hierarchical'] ) ? true : false,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => $option['taxonomy'] ),
+      );
+    }
+
+    // register the taxonomy
+  }
+
+  public function registerCustomTaxonomies()
+  {
+    foreach ( $this->taxonomies as $taxonomy ) {
+      register_taxonomy( $taxonomy['rewrite']['slug'], array( 'post' ), $taxonomy );
+    }
   }
 
 }

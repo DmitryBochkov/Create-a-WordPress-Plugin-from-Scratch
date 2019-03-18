@@ -15,29 +15,28 @@
     <div id="tab-1" class="tab-pane <?php echo !isset( $_POST['edit_taxonomy'] ) ? 'active' : ''; ?>">
       <h3>Manage Your Taxonomies</h3>
       <?php
-        // $options = get_option( 'mu_plugin_cpt' ) ?: array();
+        $options = get_option( 'mu_plugin_tax' ) ?: array();
         //
-        // echo '<table class="cpt-table"><tr><th>ID</th><th>Singular Name</th><th>Plural Name</th><th>Public</th><th>Has Archive</th><th>Actions</th></tr>';
-        // foreach ($options as $option) {
-        //   $public = isset($option['public']) ? 'true' : 'false';
-        //   $has_archive = isset($option['has_archive']) ? 'true' : 'false';
-        //
-        //   echo '<tr><td>' . $option['post_type'] . '</td><td>' . $option['singular_name'] . '</td><td>' . $option['plural_name'] . '</td><td>' . $public . '</td><td>' . $has_archive . '</td><td> ';
-        //
-        //   echo '<form action="" method="post" class="inline-block">';
-        //   echo '<input type="hidden" name="edit_taxonomy" value="'. $option['post_type'] . '">';
-        //   submit_button( 'Edit', 'primary small', 'submit', false );
-        //   echo '</form> ';
-        //
-        //   echo '<form action="options.php" method="post" class="inline-block">';
-        //   settings_fields( 'mu_plugin_cpt_settings' );
-        //   echo '<input type="hidden" name="remove" value="'. $option['post_type'] . '">';
-        //   submit_button( 'Delete', 'delete small', 'submit', false, array(
-        //     'onclick' => 'return confirm("Are you sure you want to delete this Custom Posе Type? The data associated with it will not be deleted.");'
-        //   ) );
-        //   echo '</form></td></tr>';
-        // }
-        // echo '</table>';
+        echo '<table class="cpt-table"><tr><th>ID</th><th>Singular Name</th><th>Hierarchical</th><th>Public</th><th>Actions</th></tr>';
+        foreach ($options as $option) {
+          $hierarchical = isset($option['hierarchical']) ? 'true' : 'false';
+
+          echo '<tr><td>' . $option['taxonomy'] . '</td><td>' . $option['singular_name'] . '</td><td>' . $hierarchical . '</td><td> ';
+
+          echo '<form action="" method="post" class="inline-block">';
+          echo '<input type="hidden" name="edit_taxonomy" value="'. $option['taxonomy'] . '">';
+          submit_button( 'Edit', 'primary small', 'submit', false );
+          echo '</form> ';
+
+          echo '<form action="options.php" method="post" class="inline-block">';
+          settings_fields( 'mu_plugin_tax_settings' );
+          echo '<input type="hidden" name="remove" value="'. $option['taxonomy'] . '">';
+          submit_button( 'Delete', 'delete small', 'submit', false, array(
+            'onclick' => 'return confirm("Are you sure you want to delete this Custom Taxonomy? The data associated with it will not be deleted.");'
+          ) );
+          echo '</form></td></tr>';
+        }
+        echo '</table>';
       ?>
     </div>
 
