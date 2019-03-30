@@ -67,4 +67,8 @@ $bg: #d9cb9e;
 
 div.ui-toggle {
 	@include ui-toggle(20px, $on, $off);
+
+	&.mb-10 {
+		margin-bottom: 10px;
+	}
 }
